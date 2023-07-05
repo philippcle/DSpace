@@ -10,7 +10,9 @@ package org.dspace.content.authority;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.dspace.core.Context;
 import org.dspace.core.NameAwarePlugin;
+import org.dspace.web.ContextUtil;
 
 /**
  * Plugin interface that supplies an authority control mechanism for
@@ -159,4 +161,10 @@ public interface ChoiceAuthority extends NameAwarePlugin {
     default public boolean storeAuthorityInMetadata() {
         return true;
     }
+
+    default Context getContext() {
+        Context context = ContextUtil.obtainCurrentRequestContext();
+        return context != null ? context : new Context();
+    }
+
 }

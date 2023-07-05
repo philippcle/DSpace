@@ -22,7 +22,6 @@ import org.dspace.eperson.EPerson;
 import org.dspace.eperson.factory.EPersonServiceFactory;
 import org.dspace.eperson.service.EPersonService;
 import org.dspace.util.UUIDUtils;
-import org.dspace.web.ContextUtil;
 
 /**
  * Implementation of {@link ChoiceAuthority} based on EPerson. Allows you to set
@@ -100,11 +99,6 @@ public class EPersonAuthority implements ChoiceAuthority {
             throw new RuntimeException(e.getMessage(), e);
         }
 
-    }
-
-    private Context getContext() {
-        Context context = ContextUtil.obtainCurrentRequestContext();
-        return context != null ? context : new Context();
     }
 
     private boolean isCurrentUserAdminOrAccessGroupManager(Context context) {
