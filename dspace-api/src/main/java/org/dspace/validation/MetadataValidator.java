@@ -156,7 +156,7 @@ public class MetadataValidator implements SubmissionStepValidator {
     private String getDocumentTypeAuthority(InProgressSubmission<?> obj) {
         String documentTypeField = configurationService.getProperty("submit.type-bind.field", "dc.type");
         List<MetadataValue> documentType = itemService.getMetadataByMetadataString(obj.getItem(), documentTypeField);
-        return documentType.size() > 0 ? documentType.get(0).getAuthority() : "";
+        return !documentType.isEmpty() ? documentType.get(0).getAuthority() : "";
     }
 
     private DCInputSet getDCInputSet(SubmissionStepConfig config) {
